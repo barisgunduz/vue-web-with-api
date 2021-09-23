@@ -3,19 +3,18 @@
         <h2>News</h2>
         <div class="container">
             <div class="row">
-                <div class="col-md-4"
-                        v-for="allData in allDatas"
-                        v-bind:key="allData.source.id">
-                    <div
-                        class="card mb-3"
-                        style="max-width: 540px;"
-                    >
+                <div
+                    class="col-md-4"
+                    v-for="allData in allDatas"
+                    v-bind:key="allData.source.id + randomNumber()"
+                >
+                    <div class="card mb-3" style="max-width: 540px;">
                         <div class="row g-0">
                             <div class="col-md-12">
                                 <img
                                     :src="allData.urlToImage"
                                     class="img-fluid rounded-start"
-                                    alt="..."
+                                    :alt="allData.title"
                                 />
                             </div>
                         </div>
@@ -23,7 +22,13 @@
                             <div class="col-md-12">
                                 <div class="card-body">
                                     <h5 class="card-title">
-                                        {{ allData.title }}
+                                        <a
+                                            :href="allData.url"
+                                            :title="allData.title"
+                                            target="_blank"
+                                        >
+                                            {{ allData.title }}
+                                        </a>
                                     </h5>
                                     <p class="card-text">
                                         {{ allData.description }}
@@ -53,6 +58,7 @@ export default {
     }),
     created: function() {
         this.getDataFromApi();
+        this.randomNumber();
     },
     methods: {
         getDataFromApi() {
@@ -70,14 +76,13 @@ export default {
                     );
                     this.allDatas = fullResponse;
                     console.log("first response : ", fullResponse);
-                    // let newFullResponse = fullResponse.map(function(response) {
-                    //     return `${response.source.id} ${response.author} ${response.url} ${response.description} ${response.title}`;
-                    // });
-                    // console.log(newFullResponse);
                 })
                 .catch((error) => {
                     console.log(error);
                 });
+        },
+        randomNumber: function() {
+            return Math.floor(Math.random() * (1000)) + 1;
         },
     },
 };
