@@ -14,16 +14,24 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                    <a class="navbar-brand" href="#">API APP</a>
+                    <router-link class="navbar-brand" to="/"
+                        >API APP</router-link
+                    >
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="/">Home</a>
+                            <router-link class="nav-link" to="/"
+                                >Home</router-link
+                            >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/contact">Contact</a>
+                            <router-link class="nav-link" to="/aboutus"
+                                >About Us</router-link
+                            >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/aboutus">About Us</a>
+                            <router-link class="nav-link" to="/contact"
+                                >Contact</router-link
+                            >
                         </li>
                     </ul>
                     <form class="d-flex">

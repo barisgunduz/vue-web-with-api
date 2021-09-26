@@ -71,21 +71,22 @@ export default {
                         (article) =>
                             article.author &&
                             article.url &&
+                            article.urlToImage &&
                             article.description &&
                             article.title
                     );
                     this.allDatas = fullResponse;
-                    console.log("first response : ", fullResponse);
+                    console.log("response from api : ", fullResponse);
                 })
                 .catch((error) => {
                     console.log(error);
                 });
         },
         randomNumber: function() {
-            return Math.floor(Math.random() * (1000)) + 1;
+            return Math.floor(Math.random() * 1000) + 1;
         },
     },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
